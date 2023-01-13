@@ -61,6 +61,10 @@ img {
   border-radius: 15px;
 }
 
+.topnav a.icon:hover {
+  color: #fff;
+}
+
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
@@ -76,6 +80,7 @@ img {
     display: none;
   }
   .topnav a.icon {
+    color: red;
     float: right;
     display: block;
   }

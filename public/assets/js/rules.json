@@ -1,0 +1,34 @@
+{
+ "inputs": [
+  {
+   "name": "first",
+   "min": 3,
+   "msg": "Le nom doit contenir au moins 3 lettres"
+  },
+  {
+   "name": "last",
+   "min": 3
+  },
+  {
+   "name": "email"
+  },
+  {
+   "name": "birthdate"
+  },
+  {
+   "name": "quantity",
+   "min": 0
+  },
+  {
+   "name": "location"
+  },
+  {
+   "name": "checkbox1",
+   "required": true
+  },
+  {
+   "name": "checkbox2",
+   "required": false
+  }
+ ]
+}

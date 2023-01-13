@@ -1,0 +1,182 @@
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+article,
+aside,
+details,
+dialog,
+div,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+select {
+  margin: 0;
+}
+
+input[type="submit"] {
+  all: unset;
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/***************************/
+
+:root {
+  --orange: #fe142f;
+  --gris-fonce: rgb(35, 35, 35);
+}
+
+body {
+  background-color: #fff;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  min-height: clamp(90px, 0.125vw, 240px);
+
+  display: flex;
+  justify-content: space-between;
+
+  padding-left: 100px;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 80px;
+}
+
+.app-main {
+  background-color: orange;
+  margin-left: 7vw;
+  margin-right: 7vw;
+  aspect-ratio: 1240 / 660;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  height: 100%;
+}
+
+.hero-section-content {
+  position: relative;
+  background-color: var(--gris-fonce);
+  color: #fff;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.hero-headline {
+  position: absolute;
+  font-size: clamp(4rem, 6.6vw, 128px); /* 96px / 1440px */
+  font-weight: normal;
+  white-space: nowrap;
+  padding: 60px;
+}
+
+.hero-section-txt {
+  background-color: red;
+  grid-row-start: 2;
+  padding-left: 56px;
+}
+
+.hero-section-img {
+  height: 100%;
+}
+
+.img-carre {
+  height: 100%;
+  aspect-ratio: 355 / 330;
+}
+
+.app-footer {
+  background-color: #fff;
+  height: clamp(90px, 0.125vw, 240px);
+  padding-left: min(3vw, 40px);
+  padding-bottom: 60px;
+  padding-top: 100px;
+}
+
+.copyrights {
+  color: var(--orange);
+  font-weight: bolder;
+}
