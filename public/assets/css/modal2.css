@@ -101,10 +101,12 @@ th {
 :root {
   --orange: #fe142f;
   --gris-fonce: rgb(35, 35, 35);
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
 }
 
 body {
   background-color: #fff;
+  font-family: var(--font-default);
 }
 
 .app {
@@ -132,35 +134,53 @@ body {
 }
 
 .hero-section {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto;
   height: 100%;
+  background-color: var(--gris-fonce);
 }
 
 .hero-section-content {
-  position: relative;
-  background-color: var(--gris-fonce);
   color: #fff;
   display: grid;
   grid-template-rows: 1fr 1fr;
+  z-index: 20;
 }
 
 .hero-headline {
-  position: absolute;
   font-size: clamp(4rem, 6.6vw, 128px); /* 96px / 1440px */
   font-weight: normal;
   white-space: nowrap;
-  padding: 60px;
+  padding: clamp(30px, 4vw, 80px); /** 60px / 1440px **/
 }
 
 .hero-section-txt {
-  background-color: red;
-  grid-row-start: 2;
-  padding-left: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-top: 30px;
+  padding-left: clamp(29px, 4vw, 75px); /** 56 / 1440 **/
+  padding-bottom: 60px;
+}
+
+.hero-text {
+  width: 35%;
+  font-size: clamp(1.5rem, 1.6vw, 2rem); /** 24px 1440 **/
+}
+
+.btn-signup {
+  width: fit-content;
 }
 
 .hero-section-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
   height: 100%;
+  z-index: 10;
 }
 
 .img-carre {
