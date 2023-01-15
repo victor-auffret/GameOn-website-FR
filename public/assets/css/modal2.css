@@ -120,14 +120,68 @@ body {
   display: flex;
   justify-content: space-between;
 
-  padding-left: 100px;
-  padding-right: 50px;
-  padding-top: 50px;
-  padding-bottom: 80px;
+  padding-left: clamp(50px, 7vw, 135px);
+  padding-right: clamp(25px, 3.5vw, 70px);
+  padding-top: clamp(25px, 3.5vw, 70px);
+  padding-bottom: clamp(40px, 5.5vw, 105px);
 }
 
+.app-header-navbar {
+  /* liste des elemets de menu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ul-navbar {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(0, 1vmin, 8px);
+}
+
+.li-navbar {
+  float: left;
+}
+
+.link {
+  --color: #000;
+  --bg: transparent;
+  --decoration: none;
+  --underline-color: transparent;
+
+  padding: 8px 12px;
+  padding-top: clamp(8px, 1vw, 16px);
+
+  border-radius: 8px;
+  background-color: var(--bg);
+}
+
+.link span {
+  color: var(--color);
+  font-size: clamp(10px, 1.5vw, 2rem);
+  border-bottom: 1px solid var(--underline-color);
+  padding-bottom: 0;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.link:hover {
+  --color: #fff;
+  --bg: var(--orange);
+  --underline-color: #fff;
+}
+
+.burger-icon {
+  display: none;
+}
+
+.active {
+  display: none;
+}
+
+/** fin header **/
+
 .app-main {
-  background-color: orange;
   margin-left: 7vw;
   margin-right: 7vw;
   aspect-ratio: 1240 / 660;
@@ -139,6 +193,8 @@ body {
   grid-template-columns: 1fr auto;
   height: 100%;
   background-color: var(--gris-fonce);
+  border-radius: 8px;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-section-content {
@@ -171,7 +227,28 @@ body {
 }
 
 .btn-signup {
-  width: fit-content;
+  position: absolute;
+  bottom: clamp(20px, 2vw, 60px);
+  left: clamp(30px, 4vw, 80px);
+  display: block;
+  width: clamp(150px, 14vw, 240px);
+  max-height: 65px;
+
+  padding: clamp(6px, 0.8vw, 16px) auto;
+
+  /* clamp(16px, 2vw, 40px) */
+  /** 12-32 **/
+
+  border-radius: 7px;
+  font-size: clamp(1rem, 1.6vw, 2rem);
+
+  z-index: 30;
+
+  background: var(--orange);
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  aspect-ratio: 200 / 55;
 }
 
 .hero-section-img {
@@ -185,6 +262,8 @@ body {
 
 .img-carre {
   height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   aspect-ratio: 355 / 330;
 }
 
@@ -192,11 +271,74 @@ body {
   background-color: #fff;
   height: clamp(90px, 0.125vw, 240px);
   padding-left: min(3vw, 40px);
-  padding-bottom: 60px;
-  padding-top: 100px;
+  padding-bottom: min(4.5vw, 60px);
+  padding-top: min(7.5vw, 100px);
 }
 
 .copyrights {
   color: var(--orange);
   font-weight: bolder;
+}
+
+@media screen and (max-width: 768px) {
+  .li-navbar:not(:last-child) {
+    display: none;
+  }
+
+  .burger-icon {
+    display: block;
+    padding: 1rem;
+    color: var(--orange);
+    font-size: 4vmin;
+  }
+
+  .burger-icon:hover {
+    color: #fff;
+    background-color: var(--orange);
+  }
+
+  /** **/
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .hero-section-content {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+  }
+
+  .hero-section-txt {
+    padding-right: clamp(29px, 4vw, 75px);
+  }
+
+  .hero-text {
+    width: 100%;
+    font-size: clamp(0.8rem, 3vw, 1.5rem);
+  }
+
+  .hero-section-img {
+    position: static;
+  }
+
+  .img-carre {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .btn-signup {
+    position: static;
+    margin: auto;
+    margin-top: 30px;
+    padding: 1rem 2rem;
+  }
+
+  .app-footer {
+    margin: auto;
+    padding-top: min(4vw, 40px);
+  }
 }
