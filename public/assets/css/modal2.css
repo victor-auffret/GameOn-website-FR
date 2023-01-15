@@ -234,7 +234,7 @@ body {
   width: clamp(150px, 14vw, 240px);
   max-height: 65px;
 
-  padding: clamp(6px, 0.8vw, 16px) auto;
+  padding: clamp(6px, 0.8vw, 16px) 0;
 
   /* clamp(16px, 2vw, 40px) */
   /** 12-32 **/
