@@ -126,6 +126,16 @@ body {
   padding-bottom: clamp(40px, 5.5vw, 105px);
 }
 
+.app-header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*
+  background-color: blue;
+  */
+  aspect-ratio: 285 / 60;
+}
+
 .app-header-navbar {
   /* liste des elemets de menu */
   display: flex;
@@ -277,24 +287,72 @@ body {
 
 .copyrights {
   color: var(--orange);
+  font-size: clamp(8px, 1vw, 1.25rem);
   font-weight: bolder;
 }
 
+/** MOBILE **/
 @media screen and (max-width: 768px) {
+  .app-header {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    /*
+    background-color: burlywood;
+    /*
+    padding-left: clamp(50px, 7vw, 135px);
+  padding-right: clamp(25px, 3.5vw, 70px);
+  padding-top: clamp(25px, 3.5vw, 70px);
+  padding-bottom: clamp(40px, 5.5vw, 105px);
+  */
+  }
+  .app-header-logo {
+    /*
+    background-color: blue;
+    */
+    width: clamp(110px, 26vmin, 300px);
+    aspect-ratio: 110 / 30;
+  }
+
+  .ul-navbar {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    /*
+    background-color: lightblue;
+    */
+    width: 100%;
+  }
+
   .li-navbar:not(:last-child) {
     display: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .link span {
+    font-size: clamp(16px, 4vmin, 28px);
   }
 
   .burger-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     display: block;
+    width: fit-content;
     padding: 1rem;
     color: var(--orange);
-    font-size: 4vmin;
+    font-size: clamp(16px, 4vmin, 2rem);
+    text-align: right;
   }
 
   .burger-icon:hover {
     color: #fff;
     background-color: var(--orange);
+  }
+
+  .li-show {
+    display: block !important;
   }
 
   /** **/
@@ -311,8 +369,23 @@ body {
     color: #000;
   }
 
+  .hero-headline {
+    font-size: clamp(1.5rem, 9.6vmin, 74px); /* 40px => 415px */
+    padding: 0;
+    white-space: normal;
+    /*
+    font-size: clamp(4rem, 6.6vw, 128px); 
+    font-weight: normal;
+    white-space: nowrap;
+    padding: clamp(30px, 4vw, 80px); 
+    */
+  }
+
   .hero-section-txt {
-    padding-right: clamp(29px, 4vw, 75px);
+    padding: 0;
+    padding-top: 17px;
+    /*padding-right: clamp(29px, 4vw, 75px);*/
+    padding-bottom: 30px;
   }
 
   .hero-text {
@@ -340,5 +413,9 @@ body {
   .app-footer {
     margin: auto;
     padding-top: min(4vw, 40px);
+  }
+
+  .copyrights {
+    font-size: clamp(10px, 2.5vmin, 18.5px);
   }
 }
