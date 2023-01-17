@@ -1,9 +1,10 @@
 
 async function main() {
- console.log("ok");
+
+ const modaleBg = document.querySelector('.modale-bg');
+ const modale = document.querySelector('.modale')
 
  const burgerBtn = document.getElementById('burger-icon');
- console.log(burgerBtn)
 
  const toggleNavbar = (e) => {
   e.preventDefault();
@@ -11,10 +12,6 @@ async function main() {
   const li = document.querySelectorAll('.li-navbar:not(:last-child)')
   console.log(li)
   li.forEach(elem => {
-   /*
-   console.log(elem)
-   console.log('link : ', elem.querySelector('.link'))
-   */
    const link = elem.querySelector('.link')
    if (!link.classList.contains('active')) {
     if (!elem.classList.contains('li-show')) {
@@ -25,22 +22,37 @@ async function main() {
     }
    }
   });
-  /*
-  document.querySelectorAll('.li-navbar:not(:last-child)').forEach(elem => {
-   if (!elem.classList.contains('li-burger')) {
-    if (!elem.classList.contains('li-show')) {
-     elem.classList.add('li-show')
-    }
-    else {
-     elem.classList.remove('li-show')
-    }
-   }
-  })
-  */
  }
+
  burgerBtn.addEventListener('click', toggleNavbar);
 
+ const inscriptionBtn = document.getElementById('inscription');
 
+ const toggleModale = (e) => {
+  e.preventDefault();
+  if (e.srcElement.id === "close") {
+   console.log("close")
+   modale.style.setProperty("display", "none");
+   modaleBg.style.setProperty("display", "none");
+  }
+  else {
+   console.log("open")
+   modale.style.setProperty("display", "block");
+   modaleBg.style.setProperty("display", "block");
+  }
+ }
+
+ inscriptionBtn.addEventListener('click', toggleModale);
+
+ const closeBtn = document.getElementById('close');
+
+ closeBtn.addEventListener('click', toggleModale);
+
+}
+
+const validate = (e) => {
+ e.preventDefault()
+ // traitement de soumission du formulaire
 }
 
 document.addEventListener('readystatechange', () => {

@@ -107,6 +107,7 @@ th {
 body {
   background-color: #fff;
   font-family: var(--font-default);
+  overflow-x: hidden;
 }
 
 .app {
@@ -261,6 +262,10 @@ body {
   aspect-ratio: 200 / 55;
 }
 
+.btn-signup:hover {
+  background: #3876ac;
+}
+
 .hero-section-img {
   position: absolute;
   top: 0;
@@ -276,6 +281,199 @@ body {
   border-bottom-right-radius: 8px;
   aspect-ratio: 355 / 330;
 }
+
+/** debut modale **/
+
+.modale-bg {
+  --alpha: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  width: 100vw;
+  height: 200vh;
+  overflow: hidden;
+
+  padding: 0;
+  margin: 0;
+  z-index: 150;
+  /*
+  display: none;
+  width: 0;
+  height: 0;
+  */
+
+  background-color: rgba(255, 255, 255, var(--alpha));
+}
+
+.modale {
+  /*
+  display: none;
+  */
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 225px);
+
+  width: 450px;
+  height: 80vh;
+  border-radius: 8px;
+
+  background: #232323;
+  color: #fff;
+  /*
+  TODO : faire une animation d apparition
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  */
+}
+
+.modal-body {
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+label {
+  font-family: var(--font-default);
+  font-size: 17px;
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom: 11px;
+}
+input {
+  padding: 8px;
+  border: 0.8px solid #ccc;
+  outline: none;
+}
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+}
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
+.checkbox-label,
+.checkbox2-label {
+  position: relative;
+  margin-left: 36px;
+  font-size: 12px;
+  font-weight: normal;
+}
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: -30px;
+  top: -1px;
+  transition: 0.3s;
+}
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+.checkbox-input {
+  display: none;
+}
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+  background: #279e7a;
+}
+.checkbox2-label .checkbox-icon {
+  border-radius: 4px;
+  border: 0;
+  background: #c4c4c4;
+}
+.checkbox2-label .checkbox-icon::after {
+  width: 7px;
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+  transform: rotate(-55deg);
+  left: 21%;
+  top: 19%;
+}
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+.btn-submit {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+/** fin modale **/
 
 .app-footer {
   background-color: #fff;
@@ -294,9 +492,12 @@ body {
 /** MOBILE **/
 @media screen and (max-width: 768px) {
   .app-header {
+    position: sticky;
+    top: 0;
     padding: 30px;
     display: flex;
     flex-direction: column;
+    z-index: 200;
     /*
     background-color: burlywood;
     /*
@@ -318,9 +519,7 @@ body {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    /*
-    background-color: lightblue;
-    */
+    background-color: #fff;
     width: 100%;
   }
 
