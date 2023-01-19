@@ -72,10 +72,6 @@ select {
   margin: 0;
 }
 
-input[type="submit"] {
-  all: unset;
-}
-
 img,
 video {
   height: auto;
@@ -102,6 +98,16 @@ th {
   --orange: #fe142f;
   --gris-fonce: rgb(35, 35, 35);
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 body {
@@ -237,32 +243,31 @@ body {
   font-size: clamp(1.5rem, 1.6vw, 2rem); /** 24px 1440 **/
 }
 
-.btn-signup {
-  position: absolute;
-  bottom: clamp(20px, 2vw, 60px);
-  left: clamp(30px, 4vw, 80px);
+.btn-modale {
+  position: static;
   display: block;
   width: clamp(150px, 14vw, 240px);
   max-height: 65px;
 
   padding: clamp(6px, 0.8vw, 16px) 0;
-
-  /* clamp(16px, 2vw, 40px) */
-  /** 12-32 **/
-
+  border: 0;
   border-radius: 7px;
+
   font-size: clamp(1rem, 1.6vw, 2rem);
-
-  z-index: 30;
-
   background: var(--orange);
   color: #fff;
   cursor: pointer;
-  border: 0;
   aspect-ratio: 200 / 55;
 }
 
-.btn-signup:hover {
+.btn-signup {
+  position: absolute;
+  bottom: clamp(20px, 2vw, 60px);
+  left: clamp(30px, 4vw, 80px);
+  z-index: 30;
+}
+
+.btn-modale:hover {
   background: #3876ac;
 }
 
@@ -305,20 +310,18 @@ body {
 
 .modale {
   position: absolute;
-  top: 100px;
+  top: 120px;
   left: calc(50% - 225px);
 
   width: 450px;
-  height: 80vh;
+  min-height: 80vh;
   border-radius: 8px;
 
   background: #232323;
   color: #fff;
-  /*
-  TODO : faire une animation d apparition
+
   animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  */
+  animation-duration: 1s;
 }
 
 .modale-hide {
@@ -421,8 +424,8 @@ input {
   background: #c4c4c4;
 }
 .checkbox2-label .checkbox-icon::after {
-  width: 7px;
-  height: 4px;
+  width: 12px;
+  height: 8px;
   border-radius: 2px;
   background: transparent;
   border: 2px solid transparent;

@@ -1,10 +1,12 @@
 
 async function main() {
+ // const modale = document.querySelector('.modale')
+ const burgerBtn = document.getElementById('burger-icon');
 
  const modaleBg = document.querySelector('.modale-bg');
- const modale = document.querySelector('.modale')
-
- const burgerBtn = document.getElementById('burger-icon');
+ const inscriptionBtn = document.getElementById('inscription');
+ const closeBtn = document.getElementById('close');
+ const subForm = document.getElementById('sub-form')
 
  const toggleNavbar = (e) => {
   e.preventDefault();
@@ -26,33 +28,25 @@ async function main() {
 
  burgerBtn.addEventListener('click', toggleNavbar);
 
- const inscriptionBtn = document.getElementById('inscription');
-
- const ModaleBG = document.querySelector('.modale-bg')
-
- const showModale = () => {
-  ModaleBG.classList.remove('modale-hide');
+ const showModale = (e) => {
+  e.preventDefault()
+  modaleBg.classList.remove('modale-hide');
   window.scrollTo(0, 0);
  }
 
- const hideModale = () => {
-  ModaleBG.classList.add('modale-hide');
- }
- const toggleModale = (e) => {
-  e.preventDefault();
-  if (e.srcElement.id === "close") {
-   hideModale();
-  }
-  else {
-   showModale();
-  }
+ inscriptionBtn.addEventListener('click', showModale);
+
+ const hideModale = (e) => {
+  e.preventDefault()
+  modaleBg.classList.add('modale-hide');
  }
 
- inscriptionBtn.addEventListener('click', toggleModale);
+ closeBtn.addEventListener('click', hideModale);
 
- const closeBtn = document.getElementById('close');
-
- closeBtn.addEventListener('click', toggleModale);
+ subForm.addEventListener('submit', e => {
+  e.preventDefault()
+  console.log("envoie")
+ })
 
 }
 
