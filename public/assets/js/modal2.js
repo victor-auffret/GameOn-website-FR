@@ -28,17 +28,23 @@ async function main() {
 
  const inscriptionBtn = document.getElementById('inscription');
 
+ const ModaleBG = document.querySelector('.modale-bg')
+
+ const showModale = () => {
+  ModaleBG.classList.remove('modale-hide');
+  window.scrollTo(0, 0);
+ }
+
+ const hideModale = () => {
+  ModaleBG.classList.add('modale-hide');
+ }
  const toggleModale = (e) => {
   e.preventDefault();
   if (e.srcElement.id === "close") {
-   console.log("close")
-   modale.style.setProperty("display", "none");
-   modaleBg.style.setProperty("display", "none");
+   hideModale();
   }
   else {
-   console.log("open")
-   modale.style.setProperty("display", "block");
-   modaleBg.style.setProperty("display", "block");
+   showModale();
   }
  }
 
