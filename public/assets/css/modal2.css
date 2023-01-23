@@ -493,6 +493,14 @@ input {
   font-weight: bolder;
 }
 
+.invalide {
+  border-color: red;
+}
+
+.error {
+  color: red;
+}
+
 /** MOBILE **/
 @media screen and (max-width: 768px) {
   .app-header {

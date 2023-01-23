@@ -95,35 +95,36 @@
 
               <div class="formData">
                 <label for="first">Prénom</label><br>
-                <input class="text-control" type="text" id="first" name="first" minlength="2" />
+                <input required minlength="2" class="text-control" type="text" id="first" name="first" />
                 <p class="error" id="first-error"></p>
                 <br />
               </div>
 
               <div class="formData">
                 <label for="last">Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last" />
+                <input required minlength="2" class="text-control" type="text" id="last" name="last" />
                 <p class="error" id="last-error"></p>
                 <br />
               </div>
 
               <div class="formData">
                 <label for="email">E-mail</label><br>
-                <input class="text-control" type="email" id="email" name="email" />
+                <input required class="text-control" type="email" id="email" name="email" />
                 <p class="error" id="email-error"></p>
                 <br />
               </div>
 
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate" />
-                <p class="error" id="birthday-error"></p>
+                <input required class="text-control" type="date" id="birthdate" name="birthdate" />
+                <p class="error" id="birthdate-error"></p>
                 <br />
               </div>
 
               <div class="formData">
                 <label class="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br />
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" />
+                <input required type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"
+                  value="0" />
                 <p class="error" id="quantity-error"></p>
               </div>
 
@@ -170,7 +171,7 @@
                 </label>
                 <p class="error" id="cgu-error"></p>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input class="checkbox-input" type="checkbox" id="checkbox2" name="newsletter" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je Je souhaite être prévenu des prochains évènements.
