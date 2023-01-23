@@ -113,73 +113,22 @@ async function main() {
   })
  }
 
+ // traitement de soumission du formulaire
  const validate = (e) => {
   e.preventDefault()
   console.log("envoie--------------------------")
+
+  // liste des inputs
   const inputFirstname = document.querySelector('input#first')
-  const firstnameErrors = validateTextInput(inputFirstname.value, "prénom")
-  if (firstnameErrors.length > 0) {
-   let errorfield = document.querySelector('p#first-error')
-   errorfield.innerHTML = firstnameErrors.join('<br/>')
-   inputFirstname.classList.add('invalide')
-  } else {
-   inputFirstname.value = ""
-  }
-
   const inputLastname = document.querySelector('input#last')
-  const lastnameErrors = validateTextInput(inputLastname.value, "nom de famille")
-  if (lastnameErrors.length > 0) {
-   let errorfield = document.querySelector('p#last-error')
-   errorfield.innerHTML = lastnameErrors.join('<br/>')
-   inputLastname.classList.add('invalide')
-  } else {
-   inputLastname.value = ""
-  }
-
   const inputEmail = document.querySelector('input#email')
-  inputEmail.value = ""
-
   const inputBirthdate = document.querySelector('input#birthdate')
-  const birthdateErrors = validateBirthdate(inputBirthdate.value, 13)
-  if (birthdateErrors.length > 0) {
-   let errorfield = document.querySelector('p#birthdate-error')
-   errorfield.innerHTML = birthdateErrors.join('<br/>')
-   inputBirthdate.classList.add('invalide')
-  } else {
-   inputBirthdate.value = ""
-  }
-
   const inputQuantity = document.querySelector('input#quantity')
-  const quantityErrors = validateQuantity(inputQuantity.value, 0, 99)
-  if (quantityErrors.length > 0) {
-   let errorfield = document.querySelector('p#quantity-error')
-   errorfield.innerHTML = quantityErrors.join('<br/>')
-   inputQuantity.classList.add('invalide')
-  } else {
-   inputQuantity.value = 0
-  }
-
   const inputsRadio = document.querySelectorAll('.checkbox-input[type="radio"]')
-  const locationErrors = validateLocation(inputsRadio)
-  if (locationErrors.length > 0) {
-   let errorfield = document.querySelector('p#location-error')
-   errorfield.innerHTML = locationErrors.join('<br/>')
-  } else {
-   inputsRadio.forEach(radio => radio.checked = false)
-  }
-
   const inputCgu = document.querySelector('input#checkbox1')
-  console.log('heeeee input CGU : ', Boolean(inputCgu.checked))
-  if (!Boolean(inputCgu.checked)) {
-   let errorfield = document.querySelector('p#cgu-error')
-   errorfield.innerHTML = `Vous devez obligatoirement accepter les CGU !`
-  } else {
-   inputCgu.checked = false
-  }
-
   const inputNewsletter = document.querySelector('input#checkbox2')
+  let ok = true
 
-  // traitement de soumission du formulaire
   console.log(inputFirstname.value)
   console.log(inputLastname.value)
   console.log(inputEmail.value)
@@ -191,6 +140,79 @@ async function main() {
   })
   console.log('cgu : ', inputCgu.checked)
   console.log('newsletter : ', inputNewsletter.checked)
+
+  // test du prénom
+  const firstnameErrors = validateTextInput(inputFirstname.value, "prénom")
+  if (firstnameErrors.length > 0) {
+   let errorfield = document.querySelector('p#first-error')
+   errorfield.innerHTML = firstnameErrors.join('<br/>')
+   inputFirstname.classList.add('invalide')
+   ok &= false
+  } else {
+   inputFirstname.value = ""
+  }
+
+  // test du nom de famille
+  const lastnameErrors = validateTextInput(inputLastname.value, "nom de famille")
+  if (lastnameErrors.length > 0) {
+   let errorfield = document.querySelector('p#last-error')
+   errorfield.innerHTML = lastnameErrors.join('<br/>')
+   inputLastname.classList.add('invalide')
+   ok &= false
+  } else {
+   inputLastname.value = ""
+  }
+
+  // ras pour le mail
+  inputEmail.value = ""
+
+  // test de la date d'anniversaire
+  const birthdateErrors = validateBirthdate(inputBirthdate.value, 13)
+  if (birthdateErrors.length > 0) {
+   let errorfield = document.querySelector('p#birthdate-error')
+   errorfield.innerHTML = birthdateErrors.join('<br/>')
+   inputBirthdate.classList.add('invalide')
+   ok &= false
+  } else {
+   inputBirthdate.value = ""
+  }
+
+  // test du nombre de participation
+  const quantityErrors = validateQuantity(inputQuantity.value, 0, 99)
+  if (quantityErrors.length > 0) {
+   let errorfield = document.querySelector('p#quantity-error')
+   errorfield.innerHTML = quantityErrors.join('<br/>')
+   inputQuantity.classList.add('invalide')
+   ok &= false
+  } else {
+   inputQuantity.value = 0
+  }
+
+  // test du lieu de rendez-vous
+  const locationErrors = validateLocation(inputsRadio)
+  if (locationErrors.length > 0) {
+   let errorfield = document.querySelector('p#location-error')
+   errorfield.innerHTML = locationErrors.join('<br/>')
+   ok &= false
+  } else {
+   inputsRadio.forEach(radio => radio.checked = false)
+  }
+
+  // test des consignes d'utilisation
+  if (!Boolean(inputCgu.checked)) {
+   let errorfield = document.querySelector('p#cgu-error')
+   errorfield.innerHTML = `Vous devez obligatoirement accepter les conditions d'utilisation`
+   ok &= false
+  } else {
+   inputCgu.checked = false
+  }
+
+  if (ok) {
+   // afficher un loader avec un message 'envoie des infos au serveur'
+   console.log('AFFICHER LE MESSAGE MERCI DE VOTRE PARTICIPATION')
+   // et potentiellement fermer la modale
+  }
+
  }
 
  subForm.addEventListener('submit', validate)

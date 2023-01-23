@@ -420,13 +420,14 @@ input {
   opacity: 0;
 }
 .checkbox-input {
+  visibility: hidden;
   display: none;
 }
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+.checkbox-input:checked + .checkbox-icon::after,
+.checkbox-input:checked + .checkbox-icon::after {
   opacity: 1;
 }
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox-icon {
   background: #279e7a;
 }
 .checkbox2-label .checkbox-icon {
