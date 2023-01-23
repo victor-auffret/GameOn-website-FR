@@ -304,8 +304,19 @@ body {
   padding: 0;
   margin: 0;
   z-index: 150;
+  animation-name: fadein;
+  animation-duration: 1s;
 
   background-color: rgba(255, 255, 255, var(--alpha));
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .modale {
@@ -460,16 +471,10 @@ input {
 .close:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit {
-  background: #fe142f;
-  display: block;
   margin: 0 auto;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
-  color: #fff;
-  cursor: pointer;
-  border: 0;
+  width: clamp(120px, 10vw, 160px);
 }
 
 /** fin modale **/
