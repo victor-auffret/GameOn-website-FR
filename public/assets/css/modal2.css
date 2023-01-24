@@ -606,6 +606,11 @@ input {
     color: #fff;
   }
 
+  .btn-submit {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   /** **/
   .hero-section {
     display: flex;
