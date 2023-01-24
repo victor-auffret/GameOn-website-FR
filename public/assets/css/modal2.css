@@ -364,6 +364,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
+.formData {
+  margin-top: 5px;
+}
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -539,12 +542,6 @@ input {
     flex-direction: column;
     z-index: 200;
     background-color: #fff;
-    /*
-    padding-left: clamp(50px, 7vw, 135px);
-  padding-right: clamp(25px, 3.5vw, 70px);
-  padding-top: clamp(25px, 3.5vw, 70px);
-  padding-bottom: clamp(40px, 5.5vw, 105px);
-  */
   }
   .app-header-logo {
     /*
@@ -593,6 +590,22 @@ input {
     display: block !important;
   }
 
+  /** modale **/
+
+  .modale {
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    min-height: 85vh;
+    border-radius: 8px;
+
+    background: #232323;
+    color: #fff;
+  }
+
   /** **/
   .hero-section {
     display: flex;
@@ -611,12 +624,6 @@ input {
     font-size: clamp(1.5rem, 9.6vmin, 74px); /* 40px => 415px */
     padding: 0;
     white-space: normal;
-    /*
-    font-size: clamp(4rem, 6.6vw, 128px); 
-    font-weight: normal;
-    white-space: nowrap;
-    padding: clamp(30px, 4vw, 80px); 
-    */
   }
 
   .hero-section-txt {
