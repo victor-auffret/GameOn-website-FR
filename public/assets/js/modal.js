@@ -1,4 +1,5 @@
 
+// fonction main au chargement de la page = pas de pollution de l'espace global 
 async function main() {
  // const modale = document.querySelector('.modale')
  const burgerBtn = document.getElementById('burger-icon');
@@ -9,29 +10,29 @@ async function main() {
  const subForm = document.getElementById('sub-form')
  const closeForm = document.getElementById('close-form')
 
+ // permet de masquer un formulaire (pour passer de l'inscription à la fin d'inscription)
  const hideForm = (form) => {
   if (!form.classList.contains('hidden-form')) {
    form.classList.add("hidden-form")
   }
  }
 
+ // permet d'afficher un formulaire
  const showForm = (form) => {
   if (form.classList.contains('hidden-form')) {
    form.classList.remove("hidden-form")
   }
  }
 
+ // active et désactive le menu du burger button
  const toggleNavbar = (e) => {
   e.preventDefault();
-  console.log("toggle")
   const li = document.querySelectorAll('.li-navbar:not(:last-child)')
-  console.log(li)
   li.forEach(elem => {
    const link = elem.querySelector('.link')
    if (!link.classList.contains('active')) {
     if (!elem.classList.contains('li-show')) {
      elem.classList.add('li-show')
-     console.log("elem : ", elem.classList)
     } else {
      elem.classList.remove('li-show')
     }
@@ -41,6 +42,7 @@ async function main() {
 
  burgerBtn.addEventListener('click', toggleNavbar);
 
+ // affiche la modale et remet à 0 les champs du formulaire
  const showModale = (e) => {
   e.preventDefault()
   modaleBg.classList.remove('modale-hide');
@@ -50,6 +52,7 @@ async function main() {
 
  inscriptionBtn.addEventListener('click', showModale);
 
+ // cache la modale (utilisé avec la croix et le bouton fermer)
  const hideModale = (e) => {
   e.preventDefault()
   modaleBg.classList.add('modale-hide');
@@ -57,6 +60,7 @@ async function main() {
 
  closeBtn.addEventListener('click', hideModale);
 
+ // test d'un champ de texte
  const validateTextInput = (value, fieldName) => {
   let errors = []
   if (value.length < 2) {
@@ -68,6 +72,7 @@ async function main() {
   return errors
  }
 
+ // test de la date d'anniversaire
  const validateBirthdate = (value, ageMin) => {
   let errors = []
   const year = (new Date(value)).getFullYear()
@@ -84,6 +89,7 @@ async function main() {
   return errors
  }
 
+ // test de la quantité
  const validateQuantity = (value, min, max) => {
   let errors = []
 
@@ -103,6 +109,7 @@ async function main() {
   return errors
  }
 
+ // tester la présence d'un tournois coché
  const validateLocation = (liste) => {
   let errors = []
   let ok = false
@@ -115,6 +122,7 @@ async function main() {
   return errors
  }
 
+ // enlève les erreurs du formulaire
  const resetErrors = () => {
   const errors = document.querySelectorAll('p.error')
   errors.forEach(p => {
@@ -137,7 +145,6 @@ async function main() {
  const validate = (e) => {
   e.preventDefault()
   resetForm()
-  console.log("envoie--------------------------")
 
   // liste des inputs
   const inputFirstname = document.querySelector('input#first')
@@ -229,8 +236,8 @@ async function main() {
    inputCgu.checked = true
   }
 
+  // tout se passe bien, on affiche le message 'merci de votre participation
   if (ok) {
-   console.log('AFFICHER LE MESSAGE MERCI DE VOTRE PARTICIPATION')
    hideForm(subForm)
    showForm(closeForm)
    const fermer = document.getElementById('fermer')
