@@ -7,6 +7,19 @@ async function main() {
  const inscriptionBtn = document.getElementById('inscription');
  const closeBtn = document.getElementById('close');
  const subForm = document.getElementById('sub-form')
+ const closeForm = document.getElementById('close-form')
+
+ const hideForm = (form) => {
+  if (!form.classList.contains('hidden-form')) {
+   form.classList.add("hidden-form")
+  }
+ }
+
+ const showForm = (form) => {
+  if (form.classList.contains('hidden-form')) {
+   form.classList.remove("hidden-form")
+  }
+ }
 
  const toggleNavbar = (e) => {
   e.preventDefault();
@@ -102,7 +115,7 @@ async function main() {
   return errors
  }
 
- const resetForm = () => {
+ const resetErrors = () => {
   const errors = document.querySelectorAll('p.error')
   errors.forEach(p => {
    p.innerHTML = ""
@@ -113,9 +126,17 @@ async function main() {
   })
  }
 
+ // mets les valeurs par defaut aux inputs
+ const resetForm = () => {
+  hideForm(closeForm)
+  showForm(subForm)
+  resetErrors()
+ }
+
  // traitement de soumission du formulaire
  const validate = (e) => {
   e.preventDefault()
+  resetForm()
   console.log("envoie--------------------------")
 
   // liste des inputs
@@ -127,6 +148,7 @@ async function main() {
   const inputsRadio = document.querySelectorAll('.checkbox-input[type="radio"]')
   const inputCgu = document.querySelector('input#checkbox1')
   const inputNewsletter = document.querySelector('input#checkbox2')
+
   let ok = true
 
   console.log(inputFirstname.value)
@@ -204,13 +226,15 @@ async function main() {
    errorfield.innerHTML = `Vous devez obligatoirement accepter les conditions d'utilisation`
    ok &= false
   } else {
-   inputCgu.checked = false
+   inputCgu.checked = true
   }
 
   if (ok) {
-   // afficher un loader avec un message 'envoie des infos au serveur'
    console.log('AFFICHER LE MESSAGE MERCI DE VOTRE PARTICIPATION')
-   // et potentiellement fermer la modale
+   hideForm(subForm)
+   showForm(closeForm)
+   const fermer = document.getElementById('fermer')
+   fermer.addEventListener('click', hideModale)
   }
 
  }
